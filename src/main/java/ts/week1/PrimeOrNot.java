@@ -54,7 +54,7 @@ public class PrimeOrNot {
         start = Instant.now();
         result(number,isPrime2(number));
         timeElapsed = Duration.between(start, Instant.now());
-        System.out.print("\tTime taken in Divide by 2 method: "+ timeElapsed.toMillis() +" milliseconds\n");
+        System.out.print("\tTime taken in divide by 2 method: "+ timeElapsed.toMillis() +" milliseconds\n");
 
         //  Delay
         Thread.sleep(delay);
