@@ -70,12 +70,11 @@ public class MyLinkedList {
         currentNode.setNext(newNode);
     }
 
-    public void removeEnd(){
-        Node currentNode = head;
-        while(currentNode.getNext() != null){
-            currentNode = currentNode.getNext();
-        }
-
+    public void removeLast(){
+//        Node currentNode = head;
+//        while(currentNode.getNext() != null){
+//            currentNode = currentNode.getNext();
+//        }
     }
     public void display(){
         Node currentNode = head;
