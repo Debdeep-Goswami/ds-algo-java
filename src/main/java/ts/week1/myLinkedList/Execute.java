@@ -1,4 +1,4 @@
-package ts.week1.MyLinkedList;
+package ts.week1.myLinkedList;
 
 public class Execute {
     public static void main(String[] args) {

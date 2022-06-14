@@ -1,4 +1,4 @@
-package ts.week1.MyLinkedList;
+package ts.week1.myLinkedList;
 
 public class MyLinkedList {
 
