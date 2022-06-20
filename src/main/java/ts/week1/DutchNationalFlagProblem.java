@@ -72,6 +72,7 @@ public class DutchNationalFlagProblem {
         //int[] array = {0,1,2,2,1,0,1,2,2,0};
         int[] array = {0, 0, 1, 2, 0, 1, 2};
         runDNF(array);
+        System.out.println("\nFinal output");
         display(array);
 
         System.out.println("_________________________________");
@@ -80,6 +81,7 @@ public class DutchNationalFlagProblem {
         char[] array2 = {'a','a','b','c','a','b','c'};
         char[] symbols = {'a','b','c'};
         runDNFModified(array2,symbols);
+        System.out.println("\nFinal output");
         display(array2);
     }
 }
