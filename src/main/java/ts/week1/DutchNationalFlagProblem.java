@@ -80,5 +80,6 @@ public class DutchNationalFlagProblem {
         char[] array2 = {'a','a','b','c','a','b','c'};
         char[] symbols = {'a','b','c'};
         runDNFModified(array2,symbols);
+        display(array2);
     }
 }
