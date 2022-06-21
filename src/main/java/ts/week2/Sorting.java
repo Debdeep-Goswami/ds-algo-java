@@ -3,6 +3,7 @@ package ts.week2;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Arrays;
+import java.util.Random;
 
 public class Sorting {
 
@@ -22,12 +23,8 @@ public class Sorting {
 //        }
 //        return array;
     }
-    private void swap(int[] array , int index1, int index2){
-        int temp = array[index1];
-        array[index1]=array[index2];
-        array[index2]=temp;
-    }
 
+    //___________________ Bubble Sort ___________________
     public void bubbleSort(int[] array){
         Instant start = Instant.now();
         for(int i = 0;i<array.length-1;i++) {
@@ -42,6 +39,8 @@ public class Sorting {
         Duration timeElapsed = Duration.between(start,Instant.now());
         System.out.println("Time Taken in Bubble Sort is "+timeElapsed.toMillis()+" milliseconds");
     }
+
+    // __________________ Modified Bubble sort __________
     public void modifiedBubbleSort(int[] array){
         Instant start = Instant.now();
         boolean swapped = false;
@@ -61,6 +60,8 @@ public class Sorting {
         Duration timeElapsed = Duration.between(start,Instant.now());
         System.out.println("Time Taken in Modified Bubble Sort is "+timeElapsed.toMillis()+" milliseconds");
     }
+
+    //___________________ Selection Sort ________________
     public void selectionSort(int[] array){
         Instant start = Instant.now();
         for(int i=0;i< array.length-1;i++){
@@ -77,6 +78,8 @@ public class Sorting {
         Duration timeElapsed = Duration.between(start,Instant.now());
         System.out.println("Time taken in Selection Sort = "+timeElapsed.toMillis()+" milliseconds");
     }
+
+    //___________________ Insertion Sort ________________
     public void insertionSort(int[] array){
         Instant start = Instant.now();
         for(int i=1;i<array.length;i++){
@@ -91,6 +94,8 @@ public class Sorting {
         Duration timeElapsed = Duration.between(start,Instant.now());
         System.out.println("Time taken in Insertion Sort = "+timeElapsed.toMillis()+" milliseconds");
     }
+
+    //___________________ Quick Sort _____________________________
     public void quickSort(int[] array){
         Instant start = Instant.now();
         quickSort(array,0,array.length-1);
@@ -103,6 +108,11 @@ public class Sorting {
         int partitionIndex = partition(array,low,high);
         quickSort(array,low,partitionIndex-1);
         quickSort(array,partitionIndex+1,high);
+    }
+    private void swap(int[] array , int index1, int index2){
+        int temp = array[index1];
+        array[index1]=array[index2];
+        array[index2]=temp;
     }
     private int partition(int[] array,int low,int high){
         //  Pivot selection
@@ -123,13 +133,14 @@ public class Sorting {
         swap(array,leftPointer,high);
         return leftPointer;
     }
+    //____________________ End of Quick sort ____________________
 
+    //_____________________ Merge sort __________________________
     public void mergeSort(int[] array){
         Instant start = Instant.now();
         divide(array,0,array.length-1);
         Duration timeElapsed = Duration.between(start,Instant.now());
         System.out.println("Time Taken in Merge Sort is "+timeElapsed.toMillis()+" milliseconds");
-
     }
     private void divide(int[] array, int beg, int end){
         if(beg<end) {
@@ -141,7 +152,6 @@ public class Sorting {
             conquer(array, beg, mid, end);
         }
     }
-
     private void conquer(int[] array, int beg, int mid, int end){
         int[] mergedArray = new int[end-beg+1];
         int index1 = beg;
@@ -165,6 +175,8 @@ public class Sorting {
             array[i]=mergedArray[i];
         }
     }
+    //_____________________ End of Merge sort ____________________
+
 
 
     public static void main(String[] args) throws InterruptedException {
