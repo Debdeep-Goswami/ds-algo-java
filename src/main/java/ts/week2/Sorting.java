@@ -3,7 +3,6 @@ package ts.week2;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Arrays;
-import java.util.Random;
 
 public class Sorting {
 
@@ -125,6 +124,48 @@ public class Sorting {
         return leftPointer;
     }
 
+    public void mergeSort(int[] array){
+        Instant start = Instant.now();
+        divide(array,0,array.length-1);
+        Duration timeElapsed = Duration.between(start,Instant.now());
+        System.out.println("Time Taken in Merge Sort is "+timeElapsed.toMillis()+" milliseconds");
+
+    }
+    private void divide(int[] array, int beg, int end){
+        if(beg<end) {
+            int mid = beg + (end - beg) / 2;
+            //  If beg and mid are very big integers addition triggers out of bound execption
+            //int mid = (beg + end) / 2;
+            divide(array, beg, mid);
+            divide(array, mid + 1, end);
+            conquer(array, beg, mid, end);
+        }
+    }
+
+    private void conquer(int[] array, int beg, int mid, int end){
+        int[] mergedArray = new int[end-beg+1];
+        int index1 = beg;
+        int index2 = mid+1;
+        int index3 = 0;
+
+        while(index1<=mid && index2<=end){
+            if(array[index1]<=array[index2]){
+                mergedArray[index3++]=array[index1++];
+            }else{
+                mergedArray[index3++]=array[index2++];
+            }
+        }
+        while(index1<=mid){
+            mergedArray[index3++]=array[index1++];
+        }
+        while(index2<=end){
+            mergedArray[index3++]=array[index2++];
+        }
+        for(int i=beg;i< mergedArray.length;i++){
+            array[i]=mergedArray[i];
+        }
+    }
+
 
     public static void main(String[] args) throws InterruptedException {
         Sorting sorting = new Sorting();
@@ -146,6 +187,9 @@ public class Sorting {
 
         array = unSortedArray.clone();
         sorting.quickSort(array);
+
+        array = unSortedArray.clone();
+        sorting.mergeSort(array);
 //        System.out.println("After sorting");
 //        System.out.println(Arrays.toString(array));
     }
