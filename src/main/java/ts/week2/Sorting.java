@@ -43,6 +43,25 @@ public class Sorting {
         Duration timeElapsed = Duration.between(start,Instant.now());
         System.out.println("Time Taken in Bubble Sort is "+timeElapsed.toMillis()+" milliseconds");
     }
+    public void modifiedBubbleSort(int[] array){
+        Instant start = Instant.now();
+        boolean swapped = false;
+        for(int i = 0;i<array.length-1;i++) {
+            swapped = false;
+            for (int j = 0; j < array.length - 1 - i ; j++) {
+                if (array[j] > array[j + 1]) {
+                    swapped = true;
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+            if(!swapped)
+                break;
+        }
+        Duration timeElapsed = Duration.between(start,Instant.now());
+        System.out.println("Time Taken in Modified Bubble Sort is "+timeElapsed.toMillis()+" milliseconds");
+    }
     public void selectionSort(int[] array){
         Instant start = Instant.now();
         for(int i=0;i< array.length-1;i++){
@@ -106,14 +125,18 @@ public class Sorting {
         return leftPointer;
     }
 
-    public static void main(String[] args){
+
+    public static void main(String[] args) throws InterruptedException {
         Sorting sorting = new Sorting();
-        int[] unSortedArray = sorting.generateData(100,100);
-        System.out.println("Before sorting");
-        System.out.println(Arrays.toString(unSortedArray));
+        int[] unSortedArray = sorting.generateData(10000,100);
+        //System.out.println("Before sorting");
+        //System.out.println(Arrays.toString(unSortedArray));
 
         int [] array = unSortedArray.clone();
         sorting.bubbleSort(array);
+
+        array = unSortedArray.clone();
+        sorting.modifiedBubbleSort(array);
 
         array = unSortedArray.clone();
         sorting.selectionSort(array);
@@ -123,7 +146,7 @@ public class Sorting {
 
         array = unSortedArray.clone();
         sorting.quickSort(array);
-        System.out.println("After sorting");
-        System.out.println(Arrays.toString(array));
+//        System.out.println("After sorting");
+//        System.out.println(Arrays.toString(array));
     }
 }
