@@ -133,6 +133,23 @@ public class Recursion {
         fibonacci(second,temp,term-1);
     }
 
+    public static int binarySearch(int[] array,int item,int left,int right){
+        //  Terminating condition
+        if(left>right){
+            return Integer.MIN_VALUE;
+        }
+        //  Main Logic
+        int mid = (left+right)/2;
+        if(item==array[mid]){
+           return item;
+        }
+        if(item<array[mid]){
+            return binarySearch(array,item,left,mid-1);
+        }
+        return binarySearch(array,item,mid+1,right);
+
+    }
+
     public static void main(String[] args){
 //        for(int i=0;i<5;i++){
 // 		    System.out.println(i);
@@ -170,5 +187,13 @@ public class Recursion {
 //        int second = 1;
 //        System.out.print(first+" "+second);
 //        fibonacci(first,second,term-2);
+
+        int[] array = {1,2,3,4,5,6,7,8,9};
+        int result = binarySearch(array,0,0,array.length-1);
+        if(result==Integer.MIN_VALUE){
+            System.out.println("Item not found");
+        }else{
+            System.out.println("Item found");
+        }
     }
 }
